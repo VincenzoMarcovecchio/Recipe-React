@@ -9,7 +9,7 @@
 }
 
 .conta {
-  background-color: #333;
+  background-color: white;
   min-height: 100vh;
 }
 
@@ -23,15 +23,16 @@
   margin: 1rem auto;
 }
 .modal {
-  background-color: #333;
+  background-color: honeydew !important;
 }
 .modal img {
-  width: 85%;
+  width: 75%;
   margin-top: 7.5%;
+  margin-bottom: 2rem;
 }
 .modal h1 {
   width: 100%;
-  background-color: snow;
+
   text-align: center;
   padding: 0.5rem;
   color: red;
@@ -64,11 +65,11 @@
 
 .wrappa {
   background-color: honeydew !important;
-  background: url('/images/28-Cheese.jpg');
+  background: url('/images/b.jpg');
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 30vh;
+
+  background-size: contain;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
 }

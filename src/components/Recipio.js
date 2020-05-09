@@ -33,6 +33,18 @@ class Recipio extends Component {
         <AppBar />
         <div className='modal'>
           <div className='innerModal'>
+            <br />
+            <Button
+              style={{ marginRight: 'auto', padding: '1.5rem' }}
+              component={Link}
+              to={{
+                pathname: '/',
+              }}
+              size='small'
+              color='primary'
+            >
+              Back
+            </Button>
             <img src={myboy.recipe.image} alt={myboy.recipe.label} />
             <h1>{myboy.recipe.label}</h1>
             <br />

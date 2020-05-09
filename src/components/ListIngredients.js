@@ -37,7 +37,7 @@ export default function ListIngredients({ items }) {
                         color='primary'
                         {...bindToggle(popupState)}
                       >
-                        {ite}
+                        <em>{ite}</em>
                       </Button>
 
                       <Popper {...bindPopper(popupState)} transition>
