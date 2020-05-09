@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Form from './components/Form';
 import './App.css';
+import Recipe from './components/Recipe';
+import AppBar from './components/AppBar';
+import Footer from './components/Footer';
+class App extends Component {
+  state = {
+    recipes: [],
+  };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  getrecipe = async (e) => {
+    e.preventDefault();
+    const recipeName = e.target.elements.recipeName.value;
+    const api_call = await fetch(
+      `https://api.edamam.com/search?q=${recipeName}&app_id=${process.env.REACT_APP_ID}&app_key=${process.env.REACT_APP_KEY_ID}`
+    );
+    const data = await api_call.json();
+    this.setState({ recipes: data.hits });
+  };
+
+  componentDidMount = () => {
+    const json = localStorage.getItem('recipes');
+    const recipes = JSON.parse(json);
+    this.setState({ recipes: recipes });
+  };
+
+  componentDidUpdate = () => {
+    const recipes = JSON.stringify(this.state.recipes);
+    localStorage.setItem('recipes', recipes);
+  };
+
+  render() {
+    return (
+      <div className='App'>
+        <AppBar />
+        <div className='conta'>
+          <Form getrecipe={this.getrecipe} />
+          <Recipe data={this.state.recipes} />
+          <Footer />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
